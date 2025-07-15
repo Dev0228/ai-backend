@@ -1,10 +1,12 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import routes from "./routes";
+import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
 
 // Load environment variables
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -23,6 +25,10 @@ app.get("/health", (req, res) => {
 
 // API routes
 app.use("/api", routes);
+
+// Error handling middleware (must be last)
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 // Start server
 app.listen(PORT, () => {

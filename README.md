@@ -31,23 +31,42 @@ npm run dev
 
 ## API Endpoints
 
+### Basic Endpoints
+
 - `GET /` - Welcome message
 - `GET /health` - Health check
 - `GET /api/test` - Test router endpoint
+
+### Dashboard Endpoints (6 specific endpoints)
+
+#### Admin Dashboard Components
+
+- `GET /api/dashboard/last-data` - Last data chart data
+- `GET /api/dashboard/last-income` - Last income chart data with rates
+- `GET /api/dashboard/normal-data` - Normal chart data with rates
+
+#### User Dashboard Components
+
+- `GET /api/dashboard/coders-type` - Coders type line chart data
+- `GET /api/dashboard/new-employees` - New employees bar chart data
+- `GET /api/dashboard/solid-products` - Solid products pie charts data
 
 ## Project Structure
 
 ```
 src/
-├── index.ts          # Main server entry point
+├── index.ts                    # Main server entry point
+├── controllers/
+│   └── dashboardController.ts  # Dashboard data functions
 └── routes/
-    └── index.ts      # Basic router setup
+    ├── index.ts               # Main router setup
+    └── dashboard.ts           # Dashboard routes
 ```
 
 ## Next Steps
 
 - Add authentication routes
-- Add dashboard data endpoints
 - Implement JWT middleware
 - Add data validation
 - Add error handling middleware
+- Add database integration

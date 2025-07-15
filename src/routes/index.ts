@@ -1,13 +1,11 @@
 import { Router } from "express";
+import dashboardRoutes from "./dashboard";
+import authRoutes from "./auth";
 
 const router = Router();
 
-// Test route
-router.get("/test", (req, res) => {
-  res.json({
-    message: "Router is working!",
-    timestamp: new Date().toISOString(),
-  });
-});
+// Dashboard routes
+router.use("/dashboard", dashboardRoutes);
+router.use("/auth", authRoutes);
 
 export default router;
