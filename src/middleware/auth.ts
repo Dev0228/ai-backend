@@ -4,7 +4,6 @@ import { config } from "../config";
 
 const JWT_SECRET = config.JWT_SECRET;
 
-// Extend Request interface to include user
 declare global {
   namespace Express {
     interface Request {
@@ -31,13 +30,11 @@ export const authMiddleware = (
       });
     }
 
-    // Verify JWT token
     const decoded = jwt.verify(token, JWT_SECRET) as {
       userId: string;
       role: string;
     };
 
-    // Add user info to request object
     req.user = decoded;
 
     next();
@@ -49,7 +46,6 @@ export const authMiddleware = (
   }
 };
 
-// Optional: Role-based middleware
 export const requireRole = (roles: string[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
     if (!req.user) {
@@ -70,6 +66,5 @@ export const requireRole = (roles: string[]) => {
   };
 };
 
-// Specific role middlewares
 export const requireAdmin = requireRole(["admin"]);
 export const requireUser = requireRole(["user", "admin"]);

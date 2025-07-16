@@ -1,72 +1,52 @@
-# AIDONIC Backend API
+# AIDONIC Backend
 
-A Node.js/Express.js backend API for the AIDONIC application.
+This is the backend API for the AIDONIC project, built with Node.js and TypeScript.
 
-## Setup
+## Prerequisites
 
-1. Install dependencies:
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
 
-```bash
-npm install
-```
+## Installation
 
-2. Create a `.env` file (optional for basic setup):
+1. Open a terminal and navigate to the `backend` directory:
 
-```bash
-PORT=8080
-```
+   ```bash
+   cd backend
+   ```
 
-3. Run the development server:
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+## Running the Server
+
+To start the backend server in development mode (with auto-reload):
 
 ```bash
 npm run dev
 ```
 
-## Available Scripts
+To build and run the server in production mode:
 
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build the TypeScript code
-- `npm start` - Start production server
-- `npm test` - Run tests
+```bash
+npm run build
+npm start
+```
 
-## API Endpoints
+## Testing
 
-### Basic Endpoints
+To run tests:
 
-- `GET /` - Welcome message
-- `GET /health` - Health check
-- `GET /api/test` - Test router endpoint
-
-### Dashboard Endpoints (6 specific endpoints)
-
-#### Admin Dashboard Components
-
-- `GET /api/dashboard/last-data` - Last data chart data
-- `GET /api/dashboard/last-income` - Last income chart data with rates
-- `GET /api/dashboard/normal-data` - Normal chart data with rates
-
-#### User Dashboard Components
-
-- `GET /api/dashboard/coders-type` - Coders type line chart data
-- `GET /api/dashboard/new-employees` - New employees bar chart data
-- `GET /api/dashboard/solid-products` - Solid products pie charts data
+```bash
+npm test
+```
 
 ## Project Structure
 
-```
-src/
-├── index.ts                    # Main server entry point
-├── controllers/
-│   └── dashboardController.ts  # Dashboard data functions
-└── routes/
-    ├── index.ts               # Main router setup
-    └── dashboard.ts           # Dashboard routes
-```
+- `src/` - Source code (controllers, routes, services, etc.)
+- `src/index.ts` - Entry point
 
-## Next Steps
-
-- Add authentication routes
-- Implement JWT middleware
-- Add data validation
-- Add error handling middleware
-- Add database integration
+---

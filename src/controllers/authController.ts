@@ -17,7 +17,6 @@ export const login = async (req: Request, res: Response) => {
       });
     }
 
-    // Find user by email and password
     const user = findUserByEmailAndPassword(email, password);
 
     if (!user) {
@@ -27,10 +26,8 @@ export const login = async (req: Request, res: Response) => {
       });
     }
 
-    // Generate JWT token
     const token = generateToken(user.id, user.role);
 
-    // Return user data without password
     const { password: _, ...userWithoutPassword } = user;
 
     res.json({
