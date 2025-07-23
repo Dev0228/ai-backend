@@ -11,12 +11,14 @@ import { authMiddleware, requireAdmin, requireUser } from "../middleware/auth";
 
 const router = Router();
 
-router.get("/last-data", authMiddleware, requireAdmin, getLastData);
-router.get("/last-income", authMiddleware, requireAdmin, getLastIncome);
-router.get("/normal-data", authMiddleware, requireAdmin, getNormalData);
+router.use(authMiddleware)
 
-router.get("/coders-type", authMiddleware, requireUser, getCodersType);
-router.get("/new-employees", authMiddleware, requireUser, getNewEmployes);
-router.get("/solid-products", authMiddleware, requireUser, getSolidProducts);
+router.get("/last-data", requireAdmin, getLastData);
+router.get("/last-income", requireAdmin, getLastIncome);
+router.get("/normal-data", requireAdmin, getNormalData);
+
+router.get("/coders-type", requireUser, getCodersType);
+router.get("/new-employees", requireUser, getNewEmployes);
+router.get("/solid-products", requireUser, getSolidProducts);
 
 export default router;
